@@ -1,9 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NoteActivity">
+    tools:context=".activities.NoteActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/rlTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topAppBarHeight"
+        android:background="@color/on_background"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivCloseNote"
+            android:layout_width="@dimen/iconSize"
+            android:layout_height="@dimen/iconSize"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:clickable="true"
+            android:contentDescription="@string/close_note"
+            android:focusable="true"
+            android:src="@drawable/icon_close"
+            app:tint="@color/icon_tint_color" />
+
+        <TextView
+            android:id="@+id/tvNoteTitle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/ivCloseNote"
+            android:layout_alignEnd="@id/ivNoteMoreInfo"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/text_color_primary"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/etEditTitle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/ivCloseNote"
+            android:layout_alignEnd="@id/ivNoteMoreInfo"
+            android:layout_marginStart="@dimen/iconSize"
+            android:layout_marginEnd="@dimen/iconSize"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:importantForAutofill="no"
+            android:inputType="textNoSuggestions|text"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:visibility="gone"
+            tools:ignore="LabelFor" />
+
+        <ImageView
+            android:id="@+id/ivNoteMoreInfo"
+            android:layout_width="@dimen/iconSize"
+            android:layout_height="@dimen/iconSize"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:contentDescription="@string/note_details"
+            android:src="@drawable/icon_info"
+            app:tint="@color/icon_tint_color" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/svNoteContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rlTopBar">
+
+        <TextView
+            android:id="@+id/tvNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/text_color_primary"
+            android:textIsSelectable="true"
+            android:textSize="16sp" />
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/svTextAreaEditNoteContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rlTopBar">
+
+        <com.materialtools.notes.views.MaterialToolsTextArea
+            android:id="@+id/textAreaEditNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="@font/poppins_regular"
+            android:importantForAutofill="no"
+            android:inputType="text|textMultiLine|textNoSuggestions"
+            android:textColor="@color/text_color_primary"
+            android:textSize="16sp"
+            tools:ignore="LabelFor" />
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="15dp"
+        android:backgroundTint="@color/on_background"
+        android:contentDescription="@string/create_new_note"
+        android:src="@drawable/icon_edit_note"
+        app:tint="@color/icon_tint_color" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

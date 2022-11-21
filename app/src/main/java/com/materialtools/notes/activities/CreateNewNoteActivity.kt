@@ -2,6 +2,7 @@ package com.materialtools.notes.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.materialtools.notes.R
 
 class CreateNewNoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

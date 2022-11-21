@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="bottomAppBarHeight">60dp</dimen>
+    <dimen name="topAppBarHeight">60dp</dimen>
+    <dimen name="iconSize">30dp</dimen>
 </resources>
